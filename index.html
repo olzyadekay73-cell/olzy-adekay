@@ -217,21 +217,31 @@
         ...For Childrem With Special Needs.<br>
         <a href="https://github.com/olzyadekay73-cell/olzy-adekay" target="_blank" style="color:white; text-decoration:underline;">GitHub Repository</a>
         <!-- Contact Form -->
-    <h2 class="section-title fade-in" id="contact">Contact Us</h2>
-    <form class="fade-in" action="https://formsubmit.co/olaoluwaadekola19@gmail.com" method="POST">L
+   <h2 class="section-title fade-in" id="contact">Contact Us</h2>
 
-        <label>Name</label>
-        <input type="text" placeholder="Your full name" required>
+<form class="fade-in" action="https://formsubmit.co/olaoluwaadekola19@gmail.com" method="POST">
 
-        <label>Email</label>
-        <input type="email" placeholder="Your email address" required>
+    <label>Name</label>
+    <input type="text" name="name" placeholder="Your full name" required>
 
-        <label>Your Message</label>
-        <textarea rows="5" placeholder="Write your message here..." required></textarea>
+    <label>Email</label>
+    <input type="email" name="email" placeholder="Your email address" required>
 
-        <button type="submit">Send Message</button>
-        <p style="margin-top:10px; font-size:0.9rem; color:#555;">Your message will be delivered directly to our email.</p>
-    </form>
+    <label>Your Message</label>
+    <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+    <!-- Prevent spam -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- Redirect (optional) -->
+    <input type="hidden" name="_next" value="https://olzyadekay73-cell.github.io/olzy-adekay/">
+
+    <button type="submit">Send Message</button>
+    <p style="margin-top:10px; font-size:0.9rem; color:#555;">
+        Your message will be delivered directly to our email.
+    </p>
+</form>
+
 
     <!-- Success & Error Messages -->
     <div id="form-status" style="text-align:center; margin-top:15px; font-weight:bold;"></div>
@@ -241,46 +251,8 @@
         ...For Childrem With Special Needs.<br>
         <a href="https://github.com/olzyadekay73-cell/olzy-adekay" target="_blank" style="color:white; text-decoration:underline;">GitHub Repository</a>
     </footer>
-    <script>
-        const form = document.querySelector('form');
-        const statusDiv = document.getElementById('form-status');
-
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            statusDiv.textContent = "Sending...";
-            statusDiv.style.color = "#555";
-
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
-
-            try {
-                const response = await fetch('https://formspree.io/f/mnnadqqz', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    statusDiv.textContent = "Message sent successfully!";
-                    statusDiv.style.color = "green";
-                    form.reset();
-                } else {
-                    statusDiv.textContent = "Something went wrong. Please try again.";
-                    statusDiv.style.color = "red";
-                }
-
-            } catch (error) {
-                statusDiv.textContent = "Network error. Please try again.";
-                statusDiv.style.color = "red";
-            }
-        });
-    </script>
+   
 </body>
 </html>
-
 
 
